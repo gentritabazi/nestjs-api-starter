@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table } from "src/Users/migrations/node_modules/typeorm";
 
 export class UserRefactoring1606680965185 implements MigrationInterface {
 
