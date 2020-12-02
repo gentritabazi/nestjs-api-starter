@@ -6,7 +6,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework Api starter repository.
+A starter Api for [NestJs](https://github.com/nestjs/nest) framework.
 
 ## Installation
 
@@ -25,19 +25,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Author
