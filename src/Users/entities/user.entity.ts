@@ -7,10 +7,10 @@ export class User extends EntityBase {
   id: number;
 
   @Column()
-  firstName: string;
+  first_name: string;
 
   @Column()
-  lastName: string;
+  last_name: string;
 
   @Column({ type: 'enum', enum: ['active', 'inactive', 'block'], default: 'active' })
   status: string;
