@@ -31,16 +31,16 @@ class ConfigService {
     public getTypeOrmConfig(): TypeOrmModuleOptions {
         return {
             type: 'mysql',
-            host: this.getValue('TYPEORM_HOST'),
-            port: parseInt(this.getValue('TYPEORM_PORT')),
-            username: this.getValue('TYPEORM_USERNAME'),
-            password: this.getValue('TYPEORM_PASSWORD'),
-            database: this.getValue('TYPEORM_DATABASE'),
+            host: this.getValue('DB_HOST'),
+            port: parseInt(this.getValue('DB_PORT')),
+            username: this.getValue('DB_USERNAME'),
+            password: this.getValue('DB_PASSWORD'),
+            database: this.getValue('DB_DATABASE'),
             entities: ["**/*.entity{.ts,.js}"],
-            migrationsTableName: 'migration',
-            migrations: ['src/migration/*.ts'],
+            migrationsTableName: 'migrations',
+            migrations: ['src/App/migrations/*.ts'],
             cli: {
-                migrationsDir: 'src/migration',
+                migrationsDir: 'src/App/migrations',
             },
             ssl: this.isProduction()
         };
@@ -49,11 +49,11 @@ class ConfigService {
 
 const configService = new ConfigService(process.env)
     .ensureValues([
-        'TYPEORM_HOST',
-        'TYPEORM_PORT',
-        'TYPEORM_USERNAME',
-        'TYPEORM_PASSWORD',
-        'TYPEORM_DATABASE'
+        'DB_HOST',
+        'DB_PORT',
+        'DB_USERNAME',
+        'DB_PASSWORD',
+        'DB_DATABASE'
     ]);
 
 export { configService };
