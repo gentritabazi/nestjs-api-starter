@@ -17,10 +17,10 @@ export class UserController {
   }
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() userData: CreateUserDto) {
     return {
       statusCode: HttpStatus.OK,
-      user: this.userService.create(createUserDto),
+      user: await this.userService.create(userData),
     };
   }
 }
