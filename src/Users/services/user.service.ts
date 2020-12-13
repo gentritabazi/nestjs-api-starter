@@ -42,19 +42,8 @@ export class UserService {
       }, HttpStatus.BAD_REQUEST);
     }
 
-    // data.password = await this.hashPassword('password');
-
     const newUser = await this.usersRepository.save(data);
 
     return newUser;
-  }
-
-  async hashPassword(password) {
-    const crypto = require('crypto');
-
-    const salt = crypto.randomBytes(16).toString('hex');
-    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`);
-
-    return hash;
   }
 }
