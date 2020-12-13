@@ -19,6 +19,14 @@ export class UserService {
     return this.usersRepository.findOne(id);
   }
 
+  async getByEmail(email: string) {
+    return await this.usersRepository
+      .createQueryBuilder('user')
+      .addSelect('user.password')
+      .where('user.email = :email', { email: email })
+      .getOne();
+  }
+
   async create(data: CreateUserDto): Promise<User> {
     const qb = await getRepository(User)
       .createQueryBuilder('user')
@@ -34,7 +42,7 @@ export class UserService {
       }, HttpStatus.BAD_REQUEST);
     }
 
-    data.password = await this.hashPassword('password');
+    // data.password = await this.hashPassword('password');
 
     const newUser = await this.usersRepository.save(data);
 

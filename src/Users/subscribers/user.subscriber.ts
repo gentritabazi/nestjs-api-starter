@@ -1,5 +1,6 @@
 import { Connection, EntitySubscriberInterface, EventSubscriber, InsertEvent, UpdateEvent, RemoveEvent } from 'typeorm';
 import { User } from '../entities/user.entity';
+import * as bcrypt from 'bcrypt';
 
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<User> {
@@ -21,14 +22,16 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
   /**
    * Called before user insertion.
    */
-  beforeInsert(event: InsertEvent<User>) {
+  async beforeInsert(event: InsertEvent<User>) {
     // console.log(`BEFORE USER INSERTED: `, event.entity);
+
+    event.entity.password = await this.hashPassword(event.entity.password);
   }
 
   /**
    * Called after user insertion.
    */
-  afterInsert(event: InsertEvent<User>) {
+  async afterInsert(event: InsertEvent<User>) {
     // console.log(`AFTER USER INSERTED: `, event.entity);
   }
 
@@ -58,5 +61,12 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
    */
   afterRemove(event: RemoveEvent<User>) {
     // console.log(`AFTER USER WITH ID ${event.entityId} REMOVED: `, event.entity);
+  }
+
+  /**
+   * Hash password.
+   */
+  async hashPassword(password: string) {
+    return await bcrypt.hash(password, 10);
   }
 }
