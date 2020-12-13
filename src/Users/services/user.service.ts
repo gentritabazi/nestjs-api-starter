@@ -8,19 +8,19 @@ import { CreateUserDto } from '../dto/create-user.dto';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private readonly usersRepository: Repository<User>,
+    private readonly userRepository: Repository<User>,
   ) { }
 
   getAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.userRepository.find();
   }
 
   getById(id: string): Promise<User> {
-    return this.usersRepository.findOne(id);
+    return this.userRepository.findOne(id);
   }
 
   async getByEmail(email: string) {
-    return await this.usersRepository
+    return await this.userRepository
       .createQueryBuilder('user')
       .addSelect('user.password')
       .where('user.email = :email', { email: email })
@@ -42,7 +42,7 @@ export class UserService {
       }, HttpStatus.BAD_REQUEST);
     }
 
-    const newUser = await this.usersRepository.save(data);
+    const newUser = await this.userRepository.save(data);
 
     return newUser;
   }
