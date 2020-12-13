@@ -15,48 +15,48 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
    * Called after user is loaded.
    */
   afterLoad(entity: User) {
-    console.log(`AFTER USER LOADED: `, entity);
+    // console.log(`AFTER USER LOADED: `, entity);
   }
 
   /**
    * Called before user insertion.
    */
   beforeInsert(event: InsertEvent<User>) {
-    console.log(`BEFORE USER INSERTED: `, event.entity);
+    // console.log(`BEFORE USER INSERTED: `, event.entity);
   }
 
   /**
    * Called after user insertion.
    */
   afterInsert(event: InsertEvent<User>) {
-    console.log(`AFTER USER INSERTED: `, event.entity);
+    // console.log(`AFTER USER INSERTED: `, event.entity);
   }
 
   /**
    * Called before user update.
    */
   beforeUpdate(event: UpdateEvent<User>) {
-    console.log(`BEFORE USER UPDATED: `, event.entity);
+    // console.log(`BEFORE USER UPDATED: `, event.entity);
   }
 
   /**
    * Called after user update.
    */
   afterUpdate(event: UpdateEvent<User>) {
-    console.log(`AFTER USER UPDATED: `, event.entity);
+    // console.log(`AFTER USER UPDATED: `, event.entity);
   }
 
   /**
    * Called before user removal.
    */
   beforeRemove(event: RemoveEvent<User>) {
-    console.log(`BEFORE USER WITH ID ${event.entityId} REMOVED: `, event.entity);
+    // console.log(`BEFORE USER WITH ID ${event.entityId} REMOVED: `, event.entity);
   }
 
   /**
    * Called after user removal.
    */
   afterRemove(event: RemoveEvent<User>) {
-    console.log(`AFTER USER WITH ID ${event.entityId} REMOVED: `, event.entity);
+    // console.log(`AFTER USER WITH ID ${event.entityId} REMOVED: `, event.entity);
   }
 }
