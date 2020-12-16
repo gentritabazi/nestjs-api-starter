@@ -4,9 +4,25 @@
   </a>
 </p>
 
+
 ## Description
 
 A starter Api for [NestJs](https://github.com/nestjs/nest) framework.
+
+## Included
+
+* Auth System.
+* Config Service (To work with `.env`).
+* Typeorm.
+* Users module.
+
+## Typeorm Migrations
+
+Create migration:
+`npm run typeorm:migration:create {name}`
+
+Run migrations:
+`npm run typeorm:migration:run`
 
 ## Installation
 
