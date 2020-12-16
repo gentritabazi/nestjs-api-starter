@@ -14,13 +14,8 @@ class ConfigService {
         return value;
     }
 
-    public ensureValues(keys: string[]) {
-        keys.forEach(k => this.getValue(k, true));
-        return this;
-    }
-
     public getPort() {
-        return this.getValue('PORT', true);
+        return this.getValue('PORT');
     }
 
     public isProduction() {
@@ -47,13 +42,6 @@ class ConfigService {
     }
 }
 
-const configService = new ConfigService(process.env)
-    .ensureValues([
-        'DB_HOST',
-        'DB_PORT',
-        'DB_USERNAME',
-        'DB_PASSWORD',
-        'DB_DATABASE'
-    ]);
+const configService = new ConfigService(process.env);
 
 export { configService };
